@@ -1,0 +1,1 @@
+Scala Crawler (scrawler) is a simple web crawler built in (duh) Scala.
