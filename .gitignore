@@ -1,0 +1,8 @@
+syntax: glob
+
+# Eclipse Files
+.project
+.classpath
+.manager
+.project
+bin
