@@ -1,1 +1,10 @@
-Scala Crawler (scrawler) is a simple web crawler built in (duh) Scala.
+# Scrawler - A simple Scala web crawler
+
+## Background
+
+Scala Crawler (scrawler) is a simple web crawler built in (duh) Scala. This is a simple project created from the perspective of a Java developer. As I grasp the language further, it is my hope to continuously refine the application to use more sophisticated features of the Scala language. 
+
+The goal of this application is to learn the Scala language through progressive enhancement and incremental refactoring.
+
+## License
+Please feel welcome to browse the code, make comments, provide bug fixes, or get a good laugh out of the code.
