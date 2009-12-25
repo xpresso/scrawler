@@ -6,3 +6,8 @@ syntax: glob
 .manager
 .project
 bin
+
+# Netbeans Files
+build
+dist
+nbproject
