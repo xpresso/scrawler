@@ -8,6 +8,7 @@ This is a simple project created from the perspective of a Java developer. As I 
 
 ## Methodology
 The general process of a web crawler is the following, given one or more seed links:
+
 1. Given a link, pull the source of a site
 2. Record the links found and any related data
 3. For each link found, repeat step 1
