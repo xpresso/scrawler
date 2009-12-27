@@ -12,6 +12,8 @@ object Scrawler {
         val sourceUrl = "http://www.google.com/"
         val source = Source.fromURL(new URL(sourceUrl))
         val lst = LinkParser.parse(sourceUrl, source)
+
+        println("\n" + lst.size + " links were found.\n")
         lst.foreach { link => println(link.toString) }
     }
 }

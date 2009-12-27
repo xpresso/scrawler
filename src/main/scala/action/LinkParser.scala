@@ -11,25 +11,40 @@ import domain.Link
  *  links from the text of the url.
  *
  *  This is rather simplistic and finds any html anchor references
- *  with an href. 
+ *  with an href attribute.
  */
 object LinkParser {
 
-    val hrefRegex = """(\<a.*?href=\"(.*?)\".*?\>.*?\</a>)""".r
+    val hrefRegex = """\<a.*?href=\"(.*?)\".*?\>.*?\</a>""".r
 
+    /**
+        Parses the contents of a Source object and finds all links that match
+        the specified regular expression. The links that are found are then
+        organized.
+    */
     def parse(sourceUrl: String, source: Source) : List[Link] = {
-        var links : List[Link] = Nil
+        val links : List[Link] = Nil
+        organize(hrefRegex.findAllIn(source.mkString).toList)(links)(sourceUrl)
+    }
 
-        hrefRegex.findAllIn(source.mkString).foreach { link : String =>
-            link match {
-                case hrefRegex(x, url) => {
-                    links = new Link(sourceUrl, url, "") :: links
-                    println(x)
+    /**
+        A recursive method that builds a list of Link objects from a List of 
+        Strings. Only items in the list that match the hrefRegex will be added
+    */
+    def organize (listOfMatches : List[String]) (listOfLinks : List[Link]) (sourceUrl : String)
+        : List[Link] = listOfMatches match {
+
+        case head :: tail => {
+            head match {
+                case hrefRegex(url) => {
+                    organize(tail)(new Link(sourceUrl, url, "") :: listOfLinks)(sourceUrl)
                 }
-                case _ => { println("blank") }
+                case _ => {
+                    // skip the item
+                    organize(tail)(listOfLinks)(sourceUrl)
+                }
             }
         }
-
-        links
+        case _ => listOfLinks
     }
 }
